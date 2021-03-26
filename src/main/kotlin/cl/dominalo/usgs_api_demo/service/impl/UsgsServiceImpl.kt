@@ -14,8 +14,8 @@ class UsgsServiceImpl(private val client: UsgsClient) : UsgsService {
 
     private val logger = LoggerFactory.getLogger(javaClass)
 
-    override fun getEartquakes(): List<Eartquake> {
-        val eartquakesList = client.getEartquakes()
+    override fun getEartquakes(startDate: String, finalDate: String): List<Eartquake> {
+        val eartquakesList = client.getEartquakes("geojson", startDate, finalDate)
         logger.info("Eartquake list {}", eartquakesList)
         val terremotoList: MutableList<Eartquake> = ArrayList()
 
