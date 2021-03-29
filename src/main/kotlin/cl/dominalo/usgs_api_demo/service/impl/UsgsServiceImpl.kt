@@ -20,8 +20,9 @@ class UsgsServiceImpl(private val client: UsgsClient) : UsgsService {
         val terremotoList: MutableList<Eartquake> = ArrayList()
 
         eartquakesList?.features?.forEach { item ->
-            logger.info("Item {}", item.properties?.title); terremotoList
-                .add(Eartquake(item.properties?.title, item.properties?.mag, item.properties?.place))
+            terremotoList
+                    .add(Eartquake(item.properties?.title, item.properties?.mag, item.properties?.place))
+
         }
         return terremotoList
     }
