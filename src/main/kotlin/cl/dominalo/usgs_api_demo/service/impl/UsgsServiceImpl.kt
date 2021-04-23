@@ -26,7 +26,7 @@ class UsgsServiceImpl(private val client: UsgsClient) : UsgsService {
                     .add(Eartquake(item.properties?.title,
                             item.properties?.mag,
                             Instant.ofEpochSecond(item.properties?.time!!)
-                            .atZone(ZoneId.systemDefault())
+                            .atZone(ZoneId.of("AGT"))
                             .toLocalDateTime(),
                             item.properties?.place,
                             listOf(item.geometry?.coordinates?.get(0)?.toDouble(), item.geometry?.coordinates?.get(1)?.toDouble())))
