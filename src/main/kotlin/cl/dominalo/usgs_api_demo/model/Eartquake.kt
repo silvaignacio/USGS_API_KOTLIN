@@ -1,3 +1,3 @@
 package cl.dominalo.usgs_api_demo.model
 
-data class Eartquake(val title: String?,val mag: Long?, val place: String?, val long: Double?, val lat: Double?)
+data class Eartquake(val title: String?, val mag: Long?, val place: String?, val coordinates: List<Double?>)
