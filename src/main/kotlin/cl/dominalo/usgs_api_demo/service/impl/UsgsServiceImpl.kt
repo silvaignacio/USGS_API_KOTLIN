@@ -6,6 +6,8 @@ import cl.dominalo.usgs_api_demo.service.UsgsService
 import lombok.extern.slf4j.Slf4j
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
+import java.time.Instant
+import java.time.ZoneId
 import java.util.*
 
 @Service
@@ -23,7 +25,9 @@ class UsgsServiceImpl(private val client: UsgsClient) : UsgsService {
             terremotoList
                     .add(Eartquake(item.properties?.title,
                             item.properties?.mag,
-                            item.properties?.time,
+                            Instant.ofEpochSecond(item.properties?.time!!)
+                            .atZone(ZoneId.systemDefault())
+                            .toLocalDateTime(),
                             item.properties?.place,
                             listOf(item.geometry?.coordinates?.get(0)?.toDouble(), item.geometry?.coordinates?.get(1)?.toDouble())))
 
