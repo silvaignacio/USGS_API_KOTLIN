@@ -23,6 +23,7 @@ class UsgsServiceImpl(private val client: UsgsClient) : UsgsService {
             terremotoList
                     .add(Eartquake(item.properties?.title,
                             item.properties?.mag,
+                            item.properties?.time,
                             item.properties?.place,
                             listOf(item.geometry?.coordinates?.get(0)?.toDouble(), item.geometry?.coordinates?.get(1)?.toDouble())))
 
